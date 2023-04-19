@@ -6,8 +6,6 @@ describe('GET /users', () => {
         const response = await request(app).get('/users')
         expect(response.status).toBe(200)
         const users = JSON.parse(response.body.users)
-        console.log(response.body.users)
-
         expect(users).toEqual([
             {_name: "c", _id: "1"},
             {_name: "李四", _id: "2"},
