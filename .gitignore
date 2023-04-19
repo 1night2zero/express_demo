@@ -1,5 +1,7 @@
 ### Node.gitignore ###
 package-lock.json
+**/**.back
+
 # Logs
 logs
 *.log
