@@ -20,7 +20,7 @@ class BrowserStore {
     }
 
     getUserBorrowRecord(userId: string) {
-        return this.borrowRecords.filter(borrow => borrow.user === userId)
+        return this.borrowRecords.filter(record => record.user === userId)
     }
 
 }

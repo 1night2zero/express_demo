@@ -25,11 +25,18 @@ class BookStore {
     // }
     //
     getBookById(id: string): Book | undefined {
-        return this.books.find((book) => book.id === id);
+        return this.books.find(book => {
+            if (book.id === id) {
+                return book;
+            } else {
+                return undefined;
+            }
+        });
     }
 
     getAllBooks(): Book[] {
         return this.books;
     }
 }
+
 export default BookStore;

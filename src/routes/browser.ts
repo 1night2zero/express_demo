@@ -10,13 +10,17 @@ const bookStore = new BookStore();
 
 borrowRouter.post('/', (req, res) => {
 
-    if (userStore.getUserById(req.body.user) === undefined) {
-        res.status(404).send('user not found');
-    } else if (bookStore.getBookById(req.body.book) === undefined) {
-        res.status(404).send('book not found');
+
+    const user = userStore.getUserById(req.body.user)
+    const book = bookStore.getBookById(req.body.book)
+
+    if (userStore.getUserById(req.body.user) === undefined || bookStore.getBookById(req.body.book) === undefined) {
+        res.status(404).send('user or book not found');
     } else {
         borrowStore.addBorrowRecord(req.body.user, req.body.book);
-        res.status(200).send('borrow book: ' + JSON.stringify(req.body));
+        const responseJson = JSON.stringify({"message": "ok", user, book})
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).send(responseJson);
     }
 });
 

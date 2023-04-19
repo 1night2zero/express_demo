@@ -25,6 +25,9 @@ userRouter.post('/', (req, res) => {
 
 // user borrow book
 userRouter.get('/:userID/books', (req, res) => {
-    res.status(200).send(JSON.stringify(borrowStore.getUserBorrowRecord(req.params.userID)));
+    const browsers = borrowStore.getUserBorrowRecord(req.params.userID);
+    res.status(200)
+        .setHeader('Content-Type', 'application/json')
+        .send(JSON.stringify(browsers));
 });
 export default userRouter;

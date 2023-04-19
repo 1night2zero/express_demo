@@ -15,7 +15,7 @@ class Book {
         this._name = value;
     }
 
-    get id(): string {
+    get id() {
         return this._id;
     }
 
